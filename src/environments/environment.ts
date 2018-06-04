@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  service: {
+    ListHotels: {
+      endpoint: 'http://127.0.0.1:3333/api/v1/hotels'
+    },
+    searchHotels: {
+      endpoint: 'http://127.0.0.1:3333/api/v1/hotels/search'
+    }
+  }
 };
+
 
 /*
  * In development mode, to ignore zone related error stack frames such as

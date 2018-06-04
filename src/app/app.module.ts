@@ -8,6 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Guards
 import { AuthGuard } from './guards/auth.guard';
 
+//Services
+import { HttpClientModule } from '@angular/common/http';
+import { HotelService } from './services/hotel.service';
+
 //Structure page
 import { HeaderComponent } from '../app/structurePage/header/header.component';
 import { ContentComponent } from '../app/structurePage/content/content.component';
@@ -30,11 +34,13 @@ import { HotelFilterComponent } from './hotel-filter/hotel-filter.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    HotelService
   ],
   bootstrap: [AppComponent]
 })

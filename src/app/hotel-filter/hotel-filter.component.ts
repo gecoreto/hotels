@@ -45,7 +45,8 @@ export class HotelFilterComponent implements OnInit {
       //Emito el output para filtrar el listado de hoteles
       this.filterSelected.emit({
         'stars': this.stars,
-        'nameHotel': this.vform.value['nameHotel']
+        'nameHotel': this.vform.value['nameHotel'],
+        'allStars': this.allStars
       });
     }
   }
@@ -58,7 +59,8 @@ export class HotelFilterComponent implements OnInit {
     //Emito el output para filtrar el listado de hoteles
     this.filterSelected.emit({
       'stars': this.stars,
-      'nameHotel': this.vform.value['nameHotel']
+      'nameHotel': this.vform.value['nameHotel'],
+      'allStars': this.allStars
     });
   }
 
@@ -73,7 +75,8 @@ export class HotelFilterComponent implements OnInit {
     //Emito el output para filtrar el listado de hoteles
     this.filterSelected.emit({
       'stars': this.stars,
-      'nameHotel': this.vform.value['nameHotel']
+      'nameHotel': this.vform.value['nameHotel'],
+      'allStars': this.allStars
     });
   }
 }

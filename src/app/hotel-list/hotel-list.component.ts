@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { hotelI, hotelsDummy } from '../models/hotel.interface';
+import { HotelService } from '../services/hotel.service';
 
 @Component({
   selector: 'app-hotel-list',
@@ -11,16 +12,24 @@ export class HotelListComponent implements OnInit {
   hotels: hotelI[] = [];
   hotelsBack: hotelI[] = [];
 
-  constructor() { }
+  constructor(private hotelS: HotelService) { }
 
   ngOnInit() {
     this.getHotels();
   }
 
   getHotels() {
-    this.hotels = hotelsDummy;
-    //Array para mantener los hoteles originales al filtrar
-    this.hotelsBack = this.hotels;
+    this.hotelS.getHotels().subscribe(
+      (hotels) => {
+        this.hotels = hotels
+        //Array para mantener los hoteles originales al filtrar desde front
+        this.hotelsBack = this.hotels;
+      },
+      err => {
+        alert('Estamos presentando incovenientes...');
+        console.log('Error', err);
+      }
+    );
   }
 
   getStars(cant: number) {
@@ -31,7 +40,34 @@ export class HotelListComponent implements OnInit {
     return total;
   }
 
-  filterSelected(evn: ({ stars?: ({ number: number, active: boolean, total: any[] })[], nameHotel: string })) {
+  filterSelected(evn: ({ stars?: ({ number: number, active: boolean, total: any[] })[], nameHotel: string, allStars: boolean })) {
+    //Filtrar sin llamar al servidor
+    // this.filterInFrontend(evn);
+
+    /**
+     * Filtro llamando al backend
+     */
+    let starSeleted = [];
+    //Filtro por la estrella seleccionada
+    evn.stars.forEach((star) => {
+      if (star.active) {
+        starSeleted.push(star.number);
+      }
+    });
+    this.hotelS.searchHeroes(evn.allStars, evn.nameHotel, starSeleted).subscribe(
+      (hotels) => {
+        this.hotels = hotels
+        //Array para mantener los hoteles originales al filtrar desde front
+        this.hotelsBack = this.hotels;
+      },
+      err => {
+        alert('Estamos presentando incovenientes...');
+        console.log('Error', err);
+      }
+    );
+  }
+
+  filterInFrontend(evn: ({ stars?: ({ number: number, active: boolean, total: any[] })[], nameHotel: string })) {
     this.hotels = this.hotelsBack;
     this.hotels = this.hotels.filter((hotel, index) => {
       let starSeleted = [];
