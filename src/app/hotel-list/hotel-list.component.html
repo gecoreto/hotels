@@ -1,0 +1,28 @@
+<div class="hotelList row">
+  <div class="contentFilter col-12 col-md-3">
+    <app-hotel-filter (filterSelected)="filterSelected($event)"></app-hotel-filter>
+  </div>
+  <div class="list col-12 col-md-9">
+    <div *ngFor="let hotel of hotels; index as i;" class="contentList card">
+      <div class="description">
+        <div class="image">
+          <img src="./assets/images/hotels/{{hotel.image}}" [alt]="hotel.name" srcset="">
+        </div>
+        <div class="detail">
+          <h4>{{hotel.name}}</h4>
+          <div class="stars">
+              <img *ngFor="let t of getStars(hotel.stars); index as i;" class="icon" src="./assets/icons/filters/star_gold.svg" alt="star">
+          </div>
+          <div class="amenities">
+              <img class="icon" *ngFor="let icon of hotel.amenities;"  class="icon" src="./assets/icons/amenities/{{icon}}.svg" alt="{{icon}}">
+          </div>
+        </div>
+      </div>
+      <div class="price">
+        <p>Precio por noche por <br> habitación</p>
+        <h2>ARS <span>{{hotel.price}}</span></h2>
+        <a class="btn btn-primary btn-lg" type="submit" >Ver hotel</a>
+      </div>
+    </div>
+  </div>
+</div>

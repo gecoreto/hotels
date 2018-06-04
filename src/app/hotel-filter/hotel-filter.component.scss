@@ -1,0 +1,88 @@
+@import "../../general_styles/variables";
+$tam_icon : 14px;
+.contentFilter{
+    .title{
+        @media (max-width: $breakpoints-mobile) { 
+            padding-top: 0 !important;
+        }
+        h4{
+            color: $tertiary-color;
+            img{
+                @media (min-width: $breakpoints-mobile) { 
+                    display: none;
+                }
+                position: relative;
+                top: 6px;
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+    .show{
+        display: block !important;
+    }
+    .filters,.ranking{
+        @media (max-width: $breakpoints-mobile) { 
+            display: none;
+        }
+    }
+    .card {
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        padding: 10px;
+        margin-bottom: 5px;
+        .header{
+            color: $tertiary-color;
+            margin-bottom: 17px;
+            .icon{
+                width: $tam_icon;
+                height: $tam_icon;
+            }
+            .icon_arrow{
+                position: relative;
+                top: -5px;
+                width: 25px;
+                height: 25px;
+                float: right;
+            }
+            h5{
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+        @media (max-width: $breakpoints-tablet) {
+            margin-bottom: 0px;
+        }
+    }
+    .title{
+        display: flex;
+        @media (max-width: $breakpoints-mobile) {
+            justify-content: center;
+        }
+    }
+    .filters{
+        form{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            @media (max-width: $breakpoints-mobile) {
+                justify-content: space-evenly;
+            }
+            // justify-content: space-between;
+            input{
+                margin-right: 10px,
+            }
+        }
+    }
+    .ranking{
+        .stars{
+            .icon{
+                width: $tam_icon;
+                height: $tam_icon;
+                margin-right: 3px;
+            }
+        }
+    }
+}

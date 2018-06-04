@@ -1,0 +1,126 @@
+@import "../../general_styles/variables";
+
+.hotelList{
+    margin: 0;
+    .contentFilter{
+        padding: 15px;
+        @media (max-width: $breakpoints-tablet) { 
+            padding: 0;
+        }
+    }
+    .list{
+        padding: 15px;
+        @media (max-width: $breakpoints-tablet) { 
+            margin: 0;
+            padding: 15px 5px;
+        }
+    }
+    .contentList{
+        display: flex;
+        // justify-content: space-between;
+        // align-items: center;
+        @media (max-width: $breakpoints-tablet) { 
+            flex-direction: column;
+            .description{
+                flex-direction: column;
+                width: 100%;
+            }
+        }
+        position: relative;
+        &.card{
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0,0,0,.125);
+            padding: 5px;
+            margin-bottom: 15px;
+        }
+        .description{
+            display: flex;
+            width: 80%;
+            @media (max-width: $breakpoints-tablet) { 
+                flex-direction: column;
+                width: 100%;
+            }            
+            .image{
+                img{
+                    height: 200px;
+                    width: 300px;
+                    @media (max-width: $breakpoints-tablet) { 
+                        width: 100%;
+                    }
+                }
+            }
+            .detail{
+                padding: 2px 15px;
+                h4{
+                    color: $tertiary-color;
+                }
+                .stars, .amenities{
+                    display: flex;
+                    .icon{
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 5px;
+                    }
+                }
+                .stars{
+                    margin: 5px 0 10px 0;
+                }
+            }
+        }
+        .price{
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            box-sizing: content-box;
+            width: 20%;
+            text-align: center;
+            @media (max-width: $breakpoints-tablet) { 
+                width: 100%;
+                padding-top: 15px;
+                &:before{
+                    content: '';
+                    width: 95% !important;
+                    height: 10px !important;
+                    border-top: 1px dashed gray;
+                    margin: 0 auto !important;
+                    position: inherit !important;
+                    border-right: inherit !important;
+                }
+            }
+            &::before{
+                content: '';
+                height: 90%;
+                border-right: 1px dashed gray;
+                margin: auto 0;
+                position: absolute;
+                left: 72%;
+            }       
+            p{
+                font-size: 14px;
+                color: gray;
+                @media (max-width: $breakpoints-tablet) { 
+                    br{
+                        display: none;
+                    }
+                }
+            }
+            h2{
+                color: $secondary-color;
+                font-weight: 100;
+                span{
+                    position: relative;
+                    top: 4px;
+                    font-size: 1.5em;
+                    font-weight: 600;
+                }
+            }
+            *{
+                margin-bottom: 14px;
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "general_styles/variables";
+@import "general_styles/inputs";
+@import "general_styles/buttons";
+//Componentes de grilla usando bootstrap 4
+@import "./node_modules/bootstrap/scss/bootstrap-grid";
+
+* {
+    margin: 0;
+}
+body{
+    background: #f4f4f4;
+}
