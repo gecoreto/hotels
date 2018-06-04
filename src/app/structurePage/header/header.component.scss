@@ -1,0 +1,8 @@
+@import "../../../general_styles/variables";
+.content-header{
+    background: $primary-color;
+    padding: 15px 10px;
+    @media (max-width: $breakpoints-tablet) { 
+        padding: 10px;
+    }
+}

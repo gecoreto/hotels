@@ -1,0 +1,45 @@
+<div class="contentFilter">
+  <div class="title card" (click)="showFilters = !showFilters">
+    <h4>
+      Filtros
+      <img class="icon" src="./assets/icons/filters/{{ (showFilters) ? 'baseline-arrow_drop_up' : 'sharp-arrow_drop_down' }}.svg" alt="Arrow">
+    </h4>
+  </div>
+  <div [ngClass]="{'show': showFilters}" class="filters card">
+    <div (click)="showFilterName = !showFilterName" class="header">
+      <h5>
+        <img class="icon" src="./assets/icons/filters/search.svg" alt="Arrow"> Nombre de hotel
+        <img class="icon_arrow" src="./assets/icons/filters/{{ (showFilterName) ? 'baseline-arrow_drop_up' : 'sharp-arrow_drop_down' }}.svg" alt="Arrow">
+      </h5>
+    </div>
+    <div *ngIf="showFilterName" class="content">
+      <form [formGroup]="vform" (ngSubmit)="searchByName(vform.value)">
+        <input placeholder="Ingrese el nombre del hotel" name="dp" formControlName="nameHotel">
+        <button class="btn btn-primary" type="submit" [disabled]="!vform.valid">Aceptar</button>
+      </form>
+    </div>
+  </div>
+  <div [ngClass]="{'show': showFilters}" class="ranking card">
+    <div (click)="showFilterStars = !showFilterStars" class="header">
+      <h5>
+        <img class="icon" src="./assets/icons/filters/star.svg" alt="Arrow"> Estrellas
+        <img class="icon_arrow" src="./assets/icons/filters/{{ (showFilterStars) ? 'baseline-arrow_drop_up' : 'sharp-arrow_drop_down' }}.svg" alt="Arrow">
+      </h5>
+    </div>
+    <div *ngIf="showFilterStars" class="content">
+      <div class="check">
+        <input (change)="onchangeAllStar($event)" class="check-input" type="checkbox" [(ngModel)]="allStars" id="allStars">
+        <label class="check-label" for="allStars">
+          Todas las estrellas
+        </label>
+      </div>
+      <div *ngFor="let star of stars; index as i;" class="check">
+        <input (change)="onchangeStar($event)" [checked]="allStars" class="check-input" type="checkbox" [value]="star.total.length"
+          [id]="'star_' + (i + 1)">
+        <label class="check-label stars" [for]="'star_' + (i + 1)">
+          <img *ngFor="let t of star.total; index as i;" class="icon" src="./assets/icons/filters/star_gold.svg" alt="star">
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
