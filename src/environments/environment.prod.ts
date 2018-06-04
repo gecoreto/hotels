@@ -5,7 +5,7 @@ export const environment = {
       endpoint: 'http://127.0.0.1:3333/api/v1/hotels'
     },
     searchHotels: {
-      endpoint: 'http://127.0.0.1:3333/api/v1/hotels'
+      endpoint: 'http://127.0.0.1:3333/api/v1/hotels/search'
     }
   }
 };
